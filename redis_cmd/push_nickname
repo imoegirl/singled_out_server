@@ -1,0 +1,1 @@
+type nickname_redis_cmd.txt | redis-cli -x

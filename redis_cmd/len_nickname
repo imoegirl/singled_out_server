@@ -1,0 +1,1 @@
+echo 'llen singled_out_unuse_nickname' | redis-cli
