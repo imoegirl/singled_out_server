@@ -4,6 +4,7 @@ const redis = new Redis();
 
 const rank_key = 'singled_out_max_rank';
 const unuse_nickname_key = 'singled_out_unuse_nickname';
+const unuse_nickname_en_key = 'singled_out_unuse_nickname_en'
 
 const timing = async (name = 'test', cb) => {
     console.time(name);
@@ -33,6 +34,11 @@ async function push_unuse_names(names) {
 async function get_one_unuse_name() {
     let name = await redis.lpop(unuse_nickname_key);
     // console.log('got name: ', name);
+    return name;
+}
+
+async function get_on_unuse_name_en(){
+    let name = await redis.loop(unuse_nickname_en_key);
     return name;
 }
 

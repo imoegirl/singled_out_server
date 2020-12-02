@@ -68,6 +68,24 @@ function handle_get_nickname(req, res) {
   });
 }
 
+
+function handle_get_nickname_en(req, res) {
+  // let resp = {'code': 0, 'nickname': '无名小可爱'};
+  // res.send(JSON.stringify(resp));
+  redisopt.get_one_unuse_name_en().then((result) => {
+    let code = 0;
+    if (result == null){
+      code = -1;
+    }
+
+    let resp = {'code': code, 'nickname': result};
+    console.log('分配昵称: ', result);
+    
+    res.send(JSON.stringify(resp));
+  });
+}
+
+
 function handle_get_rank(req, res) {
   let guid = req.params.guid;
   // console.log('get rank guid: ', guid);
@@ -104,6 +122,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/get_nickname', handle_get_nickname);
+app.get('/get_nickname_en', handle_get_nickname_en);
 app.get('/get_rank/:guid', handle_get_rank);
 app.get('/update_score/:guid/:score', handle_update_score);
 app.get('/get_ranklist/:count', handle_get_ranklist);
@@ -113,5 +132,5 @@ app.get('/get_ranklist/:count', handle_get_ranklist);
 // app.post('/create_user', dbopt.create_user);
 
 app.listen(3001, () => {
-  console.log('示例应用正在监听 3000 端口!');
+  console.log('示例应用正在监听 3001 端口!');
 });
