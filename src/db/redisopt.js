@@ -91,6 +91,7 @@ module.exports = {
     test_redis: test_redis,
     push_unuse_names: push_unuse_names,
     get_one_unuse_name: get_one_unuse_name,
+    get_on_unuse_name_en: get_on_unuse_name_en,
     update_score: update_score,
     get_rank_and_max_score: get_rank_and_max_score,
     get_ranklist: get_ranklist,
