@@ -38,7 +38,7 @@ async function get_one_unuse_name() {
 }
 
 async function get_one_unuse_name_en(){
-    let name = await redis.loop(unuse_nickname_en_key);
+    let name = await redis.lpop(unuse_nickname_en_key);
     return name;
 }
 
