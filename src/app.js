@@ -110,6 +110,7 @@ function handle_update_score(req, res) {
 
 function handle_get_ranklist(req, res) {
   let count = req.params.count;
+  console.log('获取排行榜数据: ', count);
   redisopt.get_ranklist(count).then((result) => {
     // console.log(result);
     let resp = {'code': 0, 'data': result};
